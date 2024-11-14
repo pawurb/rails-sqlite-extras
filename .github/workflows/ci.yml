@@ -1,0 +1,34 @@
+name: Ruby CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: ['3.3', '3.2', '3.1']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby ${{ matrix.ruby-version }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - name: Setup dependencies
+        run: |
+          gem install bundler -v 2.4.22
+          sudo apt-get update --allow-releaseinfo-change
+          bundle config set --local path 'vendor/bundle'
+          bundle config set force_ruby_platform true
+          bundle config set build.sqlite3 "--with-sqlite-cflags='-DSQLITE_ENABLE_DBSTAT_VTAB=1'"
+          bundle install
+          sleep 2
+      - name: Run tests 
+        run: |
+          bundle exec rspec spec/
+
