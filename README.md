@@ -1,19 +1,27 @@
 # Rails Sqlite Extras [![Gem Version](https://badge.fury.io/rb/rails-sqlite-extras.svg)](https://badge.fury.io/rb/rails-sqlite-extras) [![GH Actions](https://github.com/pawurb/rails-sqlite-extras/actions/workflows/ci.yml/badge.svg)](https://github.com/pawurb/rails-sqlite-extras/actions)
 
-Copy/paste of [ecto_sqlite3_extras](https://github.com/orsinium-labs/ecto_sqlite3_extras). Helper queries available in Ruby and rake tasks providing insights into the Sqlite database.
+Copy/paste of [ecto_sqlite3_extras](https://github.com/orsinium-labs/ecto_sqlite3_extras). Helper queries available in Ruby and Rails rake tasks providing insights into the Sqlite database.
 
 ## Installation
 
-Some queries use `dbstat` table which has to be enabled via a `SQLITE_ENABLE_DBSTAT_VTAB` compile flag:
+`Gemfile`
+```bash
+gem "rails-sqlite-extras"
+```
+
+Some queries use `dbstat` table. You have to use [sqlite3 gem](https://github.com/sparklemotion/sqlite3-ruby) with version `>= 2.3.0` because it has this feature enabled by default:
+
+`Gemfile`
+
+```ruby
+gem "sqlite3", "~> 2.3"
+```
+
+Alternatively, if you're stuck on lower version, you have to enable `dbstat` by setting a `SQLITE_ENABLE_DBSTAT_VTAB` compile flag:
 
 ```bash
 bundle config set force_ruby_platform true
 bundle config set build.sqlite3 "--with-sqlite-cflags='-DSQLITE_ENABLE_DBSTAT_VTAB=1'"
-```
-
-`Gemfile`
-```bash
-gem 'rails-sqlite-extras'
 ```
 
 ## Available queries
