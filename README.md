@@ -1,6 +1,6 @@
 # Rails Sqlite Extras [![Gem Version](https://badge.fury.io/rb/rails-sqlite-extras.svg)](https://badge.fury.io/rb/rails-sqlite-extras) [![GH Actions](https://github.com/pawurb/rails-sqlite-extras/actions/workflows/ci.yml/badge.svg)](https://github.com/pawurb/rails-sqlite-extras/actions)
 
-Copy/paste of [ecto_sqlite3_extras](https://github.com/orsinium-labs/ecto_sqlite3_extras). Helper queries providing insights into the Sqlite database.
+Copy/paste of [ecto_sqlite3_extras](https://github.com/orsinium-labs/ecto_sqlite3_extras). Helper queries available in Ruby and rake tasks providing insights into the Sqlite database.
 
 ## Installation
 
@@ -19,6 +19,10 @@ gem 'rails-sqlite-extras'
 ## Available queries
 
 ### `total_size`
+
+```bash
+rake sqlite_extras:total_size
+```
 
 ```ruby
 RailsSqliteExtras.total_size
@@ -40,6 +44,10 @@ The total size of all tables and indices. It's a summary table, it has only 2 co
 
 ### `table_size`
 
+```bash
+rake sqlite_extras:table_size
+```
+
 ```ruby
 RailsSqliteExtras.table_size
 ```
@@ -56,6 +64,10 @@ Information about the space used (and unused) by all tables. Based on the [dbsta
 - `max_payload_size`: The size of the biggest payload in the table.
 
 ### `index_size`
+
+```bash
+rake sqlite_extras:index_size
+```
 
 ```ruby
 RailsSqliteExtras.index_size
@@ -75,6 +87,10 @@ Size of all indices.
 
 ### `sequence_number`
 
+```bash
+rake sqlite_extras:sequence_number
+```
+
 ```ruby
 RailsSqliteExtras.sequence_number
 ```
@@ -85,6 +101,10 @@ Sequence numbers of autoincrement columns. Generated based on the [sqlite_sequen
 - `sequence_number`.
 
 ### `pragma`
+
+```bash
+rake sqlite_extras:pragma
+```
 
 ```ruby
 RailsSqliteExtras.pragma
@@ -97,6 +117,10 @@ List values of PRAGMAs (settings). Only includes the ones that have an integer o
 
 ### `compile_options` 
 
+```bash
+rake sqlite_extras:compile_options
+```
+
 ```ruby
 RailsSqliteExtras.compile_options
 ```
@@ -104,6 +128,10 @@ RailsSqliteExtras.compile_options
 List the [compile-time options](https://www.sqlite.org/compile.html) used when building SQLite, one option per row. The "SQLITE_" prefix is omitted from the returned option names. See [exqlite docs](https://github.com/elixir-sqlite/exqlite#defining-extra-compile-flags) on how to change these options.
 
 ### `integrity_check`
+
+```bash
+rake sqlite_extras:integrity_check
+```
 
 ```ruby
 RailsSqliteExtras.integrity_check

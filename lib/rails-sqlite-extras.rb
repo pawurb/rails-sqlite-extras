@@ -93,3 +93,5 @@ module RailsSqliteExtras
     @@database_url || ENV["RUBY_PG_EXTRAS_DATABASE_URL"] || ENV.fetch("DATABASE_URL")
   end
 end
+
+require "rails_sqlite_extras/railtie" if defined?(Rails)
