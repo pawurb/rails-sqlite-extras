@@ -52,7 +52,7 @@ module RailsSqliteExtras
       puts Terminal::Table.new(
         title: title,
         headings: headings,
-        rows: result.values,
+        rows: result.map(&:values),
       )
     else
       raise "Invalid in_format option"

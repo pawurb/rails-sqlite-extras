@@ -19,7 +19,7 @@ describe RailsSqliteExtras do
       expect do
         RailsSqliteExtras.run_query(
           query_name: query_name,
-          in_format: :hash,
+          in_format: :display_table,
         )
       end.not_to raise_error
     end

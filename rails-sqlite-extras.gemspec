@@ -2,6 +2,7 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "rails_sqlite_extras/version"
+require "terminal-table"
 
 Gem::Specification.new do |s|
   s.name = "rails-sqlite-extras"
@@ -17,9 +18,11 @@ Gem::Specification.new do |s|
   s.license = "MIT"
   s.add_dependency "rails"
   s.add_dependency "sqlite3"
+  s.add_dependency "terminal-table"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
   s.add_development_dependency "rufo"
+  s.add_development_dependency "dbg-rb"
 
   if s.respond_to?(:metadata=)
     s.metadata = { "rubygems_mfa_required" => "true" }
