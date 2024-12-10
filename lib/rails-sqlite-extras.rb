@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "terminal-table"
+
 module RailsSqliteExtras
   @@database_url = nil
 
